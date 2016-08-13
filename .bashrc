@@ -36,3 +36,4 @@ function mkcd {
 
 shopt -s autocd
 
+PS1="\w \$ "
