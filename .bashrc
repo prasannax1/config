@@ -12,6 +12,9 @@ fi
 alias vi=vim
 alias cd..="cd .."
 alias ks=ls
+alias diff='diff --color=auto'
+alias grep='grep --color=auto'
+alias ls='ls --color=auto'
 
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
@@ -36,4 +39,22 @@ function mkcd {
 
 shopt -s autocd
 
-PS1="\w \$ "
+GREEN="\[$(tput setaf 2)\]"
+RED="\[$(tput setaf 1)\]"
+BLUE="\[$(tput setaf 4)\]"
+YELLOW="\[$(tput setaf 3)\]"
+MAGENTA="\[$(tput setaf 5)\]"
+CYAN="\[$(tput setaf 6)\]"
+WHITE="\[$(tput setaf 7)\]"
+BLACK="\[$(tput setaf 0)\]"
+BGREEN="\[$(tput setab 2)\]"
+BRED="\[$(tput setab 1)\]"
+BBLUE="\[$(tput setab 4)\]"
+BYELLOW="\[$(tput setab 3)\]"
+BMAGENTA="\[$(tput setab 5)\]"
+BCYAN="\[$(tput setab 6)\]"
+BWHITE="\[$(tput setab 7)\]"
+BBLACK="\[$(tput setab 0)\]"
+RESET="\[$(tput sgr0)\]"
+
+PS1="${YELLOW}\u${RED}@\h ${BLUE}\w ${BWHITE}${BLACK}\$${RESET} "
