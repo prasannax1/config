@@ -58,3 +58,5 @@ BBLACK="\[$(tput setab 0)\]"
 RESET="\[$(tput sgr0)\]"
 
 PS1="${YELLOW}\u${RED}@\h ${BLUE}\w ${BWHITE}${BLACK}\$${RESET} "
+
+set -o vi
