@@ -61,3 +61,8 @@ PS1="${YELLOW}\u${RED}@\h ${BLUE}\w ${BWHITE}${BLACK}\$${RESET} "
 
 set -o vi
 complete -cf sudo
+
+lsh() {
+    host=$1
+    lxc exec $host -- su - pras
+}
