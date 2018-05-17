@@ -57,18 +57,17 @@ BWHITE="\[$(tput setab 7)\]"
 BBLACK="\[$(tput setab 0)\]"
 RESET="\[$(tput sgr0)\]"
 
-PS1="${YELLOW}\u${RED}@\h ${BLUE}\w ${BWHITE}${BLACK}\$${RESET} "
+PS1="${YELLOW}\u${RED}@\h ${BLUE}\w ${BBLACK}${WHITE}\$${RESET} "
 
 set -o vi
 complete -cf sudo
 
-lsh() {
-    host=$1
-    lxc exec $host -- su - pras
-}
-
 # User defined aliases
 if [ -f ~/.bash_aliases ]; then
-    ~/.bash_aliases
+    . ~/.bash_aliases
 fi
 
+# User defined functions
+if [ -f ~/.bash_functions ]; then
+    . ~/.bash_functions
+fi
