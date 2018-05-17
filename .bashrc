@@ -66,3 +66,9 @@ lsh() {
     host=$1
     lxc exec $host -- su - pras
 }
+
+# User defined aliases
+if [ -f ~/.bash_aliases]; then
+    ~/.bash_aliases
+fi
+
