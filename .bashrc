@@ -81,7 +81,7 @@ prompt_function() {
     if [ $RET != 0 ]; then
         echo -ne "${YELLOW}[${RED}${RET} ${YELLOW}${CMD}]${RESET} "
     fi
-    local GIT_BRANCH="$(git describe --all 2>/dev/null)"
+    local GIT_BRANCH="$(git describe --all 2>/dev/null | cut -d/ -f2)"
     if [[ "x${GIT_BRANCH}" != "x" ]]; then
         mcount="$(git status -s | wc -l)"
         if [ $mcount != 0 ]; then
