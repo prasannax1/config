@@ -85,9 +85,9 @@ prompt_function() {
     if [[ "x${GIT_BRANCH}" != "x" ]]; then
         mcount="$(git status -s | wc -l)"
         if [ $mcount != 0 ]; then
-            echo -ne "${YELLOW}<${BLUE}${GIT_BRANCH} ${RED}(+${mcount})${YELLOW}>${RESET} "
+            echo -ne "${YELLOW}<${GREEN}${GIT_BRANCH} ${RED}(+${mcount})${YELLOW}>${RESET} "
         else
-            echo -ne "${YELLOW}<${BLUE}${GIT_BRANCH}${YELLOW}>${RESET} "
+            echo -ne "${YELLOW}<${GREEN}${GIT_BRANCH}${YELLOW}>${RESET} "
         fi
     fi
 }
