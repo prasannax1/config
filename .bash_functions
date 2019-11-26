@@ -24,3 +24,40 @@ v2gif () {
             convert -delay 5 -loop 0 - "${NAME}.gif"
     done
 }
+
+vmdisk() {
+    HDDIR=${HOME}/vm
+    HD=$1
+    SIZE=$2
+    qemu-virgil.qemu-img create -f qcow2 ${HDDIR}/${HD}.img ${SIZE}
+}
+
+vminst() {
+    VM=$1
+    ISO=$2
+    HDDIR=${HOME}/vm
+    ISODIR=${HOME}/isos
+    qemu-virgil \
+        -enable-kvm \
+        -m 4096 \
+        -device virtio-vga,virgl=on \
+        -display sdl,gl=on \
+        -netdev user,id=net.0,hostfwd=tcp::10022-:22 \
+        -device virtio-net-pci,netdev=net.0 \
+        -cdrom ${ISO} \
+        -boot once=d \
+        -drive file=${HDDIR}/${VM}.img,if=virtio
+}
+
+vmrun() {
+    VM=$1
+    HDDIR=${HOME}/vm
+    qemu-virgil \
+        -enable-kvm \
+        -m 4096 \
+        -device virtio-vga,virgl=on \
+        -display sdl,gl=on \
+        -netdev user,id=net.0,hostfwd=tcp::10022-:22 \
+        -device virtio-net-pci,netdev=net.0 \
+        -drive file=${HDDIR}/${VM}.img,if=virtio
+}
