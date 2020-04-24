@@ -23,7 +23,5 @@ set smarttab
 set cmdheight=2
 
 set linebreak
-set showbreak
-set nolist
 
 nnoremap <C-L> :nohl<CR><C-L>
