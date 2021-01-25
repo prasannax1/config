@@ -11,8 +11,6 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-PROMPT='%F{yellow}%n%F{red}@%m %F{blue}%/%f'$'\n''%(?.%K{black}.%K{red})%F{white}%%%f%k '
-RPROMPT='%F{cyan}%*%f'
 
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
@@ -20,3 +18,35 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey "$key[Up]" up-line-or-beginning-search # Up
 bindkey "$key[Down]" down-line-or-beginning-search # Down
+
+setopt prompt_subst
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git svn
+#zstyle ':vcs_info:git*' formats "%s  %r/%S %b (%a) %m%u%c "
+
+precmd() {
+    vcs_info
+}
+
+prompt_user='%F{yellow}%n%f'
+prompt_host='%F{red}@%m%f'
+prompt_path='%F{blue}%/%f'
+prompt_git='%F{green}${vcs_info_msg_0}%f'
+prompt_newline=$'\n'
+prompt_prompt='%(?.%K{black}.%K{red})%(?.%F{white}.%F{black})%B%%%b%f%k'
+prompt_clock='%F{cyan}%*%f'
+
+PROMPT="${prompt_user}${prompt_host} ${prompt_path} "'${ivcs_info_msg_0}'"${prompt_newline}${prompt_prompt} "
+RPROMPT="${prompt_clock}"
+
+PROMPT='%F{yellow}%n%F{red}@%m %F{blue}%/%f %F{green}${vcs_info_msg_0_}%f'$'\n''%(?.%K{black}.%K{red})%(?.%F{white}.%F{black})%B%%%b%f%k '
+RPROMPT='%F{cyan}%*%f'
+
+alias vi=vim
+alias cd..="cd .."
+alias ks=ls
+alias diff='diff --color=auto'
+alias grep='grep --color=auto'
+alias ls='ls --color=auto'
+alias ip='ip -color=auto'
+alias gti=git
