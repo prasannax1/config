@@ -1,7 +1,7 @@
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 bindkey -v
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
@@ -10,6 +10,8 @@ zstyle :compinstall filename '/home/ubuntu/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+
+zstyle ':completion:*'  matcher-list 'm:{a-z}={A-Z}'
 
 
 autoload -U up-line-or-beginning-search
@@ -39,8 +41,8 @@ prompt_clock='%F{cyan}%*%f'
 PROMPT="${prompt_user}${prompt_host} ${prompt_path} "'${ivcs_info_msg_0}'"${prompt_newline}${prompt_prompt} "
 RPROMPT="${prompt_clock}"
 
-PROMPT='%F{yellow}%n%F{red}@%m %F{blue}%/%f %F{green}${vcs_info_msg_0_}%f'$'\n''%(?.%K{black}.%K{red})%(?.%F{white}.%F{black})%B%%%b%f%k '
-RPROMPT='%F{cyan}%*%f'
+PROMPT='%F{yellow}%n%F{red}@%m %F{blue}%/%f %F{green}${vcs_info_msg_0_}%f'$'\n''%(?.%K{black}.%K{red})%(?.%F{white}.%F{black})%B$%b%f%k '
+RPROMPT='%K{cyan}%F{black} %D %* %f%k'
 
 alias vi=vim
 alias cd..="cd .."
