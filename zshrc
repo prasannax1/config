@@ -50,3 +50,8 @@ alias grep='grep --color=auto'
 alias ls='ls --color=auto'
 alias ip='ip -color=auto'
 alias gti=git
+
+if [[ -f ~/.zsh_functions ]]; then
+    source ~/.zsh_functions
+fi
+
