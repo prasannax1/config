@@ -1,3 +1,7 @@
+if [[ -f ~/.profile ]]; then
+    source .profile
+fi
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=10000
